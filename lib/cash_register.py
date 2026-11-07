@@ -31,3 +31,8 @@ class CashRegister:
     else:
       self.total -= self.total * (self.discount / 100) # applies the discount to the total
       print(f"After the discount, the total comes to ${self.total:g}.") # success message with new total
+  
+  def void_last_transaction(self): # removes the last transaction
+    last_price = self.previous_transactions.pop()
+    self.total -= last_price
+    self.items.pop()
