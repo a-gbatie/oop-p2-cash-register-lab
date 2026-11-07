@@ -25,3 +25,5 @@ class CashRegister:
     
     self.total += price * quantity # adds the full cost of the items to the total
     
+  def apply_discount(self):
+    self.total -= self.total * (self.discount / 100) # applies the discount to the total
