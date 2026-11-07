@@ -26,5 +26,8 @@ class CashRegister:
     self.total += price * quantity # adds the full cost of the items to the total
     
   def apply_discount(self):
-    self.total -= self.total * (self.discount / 100) # applies the discount to the total
-    print(f"After the discount, the total comes to ${self.total:g}.") # success message with new total
+    if self.discount == 0: # checks if there is no discount
+      print("There is no discount to apply.") 
+    else:
+      self.total -= self.total * (self.discount / 100) # applies the discount to the total
+      print(f"After the discount, the total comes to ${self.total:g}.") # success message with new total
