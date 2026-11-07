@@ -27,3 +27,4 @@ class CashRegister:
     
   def apply_discount(self):
     self.total -= self.total * (self.discount / 100) # applies the discount to the total
+    print(f"After the discount, the total comes to ${self.total:g}.") # success message with new total
