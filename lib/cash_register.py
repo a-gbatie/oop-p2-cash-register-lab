@@ -21,9 +21,10 @@ class CashRegister:
   def add_item(self, name, price, quantity=1): # adds an item - quantity deault is 1
     for _ in range(quantity): # repeats for the quantity of items
       self.items.append(name) # stores the items
-      self.previous_transactions.append(price) # adds the item's price to the previous transactions
     
-    self.total += price * quantity # adds the full cost of the items to the total
+    transaction_total = price * quantity
+    self.total += transaction_total # adds the full cost of the items to the total
+    self.previous_transactions.append(transaction_total) # adds the item's price to the previous transactions
     
   def apply_discount(self):
     if self.discount == 0: # checks if there is no discount
@@ -33,6 +34,5 @@ class CashRegister:
       print(f"After the discount, the total comes to ${self.total:g}.") # success message with new total
   
   def void_last_transaction(self): # removes the last transaction
-    last_price = self.previous_transactions.pop()
-    self.total -= last_price
-    self.items.pop()
+    last_total = self.previous_transactions.pop()
+    self.total -= last_total
