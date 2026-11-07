@@ -18,7 +18,10 @@ class CashRegister:
     else:
       raise ValueError("Discount must be an integer between 0 and 100") # raises an error for invalid discount
     
-  def add_item(self, name, price): # adds an item
-    self.items.append(name) # adds the item's name
-    self.total += price # adds the item's price to total 
-    self.previous_transactions.append(price) # adds the item's price to the previous transactions
+  def add_item(self, name, price, quantity=1): # adds an item - quantity deault is 1
+    for _ in range(quantity): # repeats for the quantity of items
+      self.items.append(name) # stores the items
+      self.previous_transactions.append(price) # adds the item's price to the previous transactions
+    
+    self.total += price * quantity # adds the full cost of the items to the total
+    
