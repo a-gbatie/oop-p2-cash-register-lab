@@ -16,7 +16,7 @@ class CashRegister:
     if isinstance(value, int) and 0 <= value <= 100: # checks the allowed range
       self._discount = value # stores the valid discount percentage
     else:
-      raise ValueError("Discount must be an integer between 0 and 100") # raises an error for invalid discount
+      print("Not valid discount") # prints an error for invalid discount
     
   def add_item(self, name, price, quantity=1): # adds an item - quantity deault is 1
     for _ in range(quantity): # repeats for the quantity of items
@@ -24,7 +24,7 @@ class CashRegister:
     
     transaction_total = price * quantity
     self.total += transaction_total # adds the full cost of the items to the total
-    self.previous_transactions.append(transaction_total) # adds the item's price to the previous transactions
+    self.previous_transactions.append({"name": name, "price": price, "quantity": quantity}) # adds the item's price to the previous transactions
     
   def apply_discount(self):
     if self.discount == 0: # checks if there is no discount
@@ -33,6 +33,16 @@ class CashRegister:
       self.total -= self.total * (self.discount / 100) # applies the discount to the total
       print(f"After the discount, the total comes to ${self.total:g}.") # success message with new total
   
-  def void_last_transaction(self): # removes the last transaction
-    last_total = self.previous_transactions.pop()
-    self.total -= last_total
+  def void_last_transaction(self):
+    if not self.previous_transactions:
+      print("No transaction to void.")
+    else:
+      last_transaction = self.previous_transactions.pop()
+
+      price = last_transaction["price"]
+      quantity = last_transaction["quantity"]
+
+      self.total -= price * quantity
+
+      for _ in range(quantity):
+        self.items.pop()
