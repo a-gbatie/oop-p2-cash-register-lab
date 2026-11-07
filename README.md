@@ -121,3 +121,89 @@ Before you submit your solution, you need to save your progress with git.
 4. When you are ready to submit, click the ***Load Lab: Object Oriented Programming (OOP)- Part 2- Cash Register*** button in Canvas to launch CodeGrade.
   * Click on + Create Submission. Connect your repository for this lab.
   * For additional information on submitting assignments in CodeGrade: [Getting Started in Canvas](https://help.codegrade.com/for-students/getting-started/getting-started-in-canvas).
+
+---
+
+## My Completed Cash Register Project
+
+### Project Overview
+
+For this lab, I created a `CashRegister` class using Python and Object-Oriented Programming (OOP).
+
+The cash register can add items, calculate totals, apply discounts, and void previous transactions.
+
+### Python Concepts I Practiced
+
+- **Classes and objects:** Created a `CashRegister` class.
+- **Instance attributes:** Used `total`, `discount`, `items`, and `previous_transactions` to store information.
+- **Methods:** Created functions inside the class to perform cash register operations.
+- **Properties:** Used `@property` and `@discount.setter` to validate discounts.
+- **Loops:** Used a `for` loop to handle multiple quantities of an item.
+- **Conditional statements:** Used `if` and `else` to handle discounts.
+
+### Cash Register Methods
+
+**`__init__(discount=0)`**
+
+Creates a new cash register with a starting total of 0, a default discount of 0%, and empty lists for items and transactions.
+
+**`add_item(name, price, quantity=1)`**
+
+Adds an item to the cash register. If the quantity is greater than 1, the total price is calculated by multiplying the price by the quantity.
+
+**`apply_discount()`**
+
+Checks whether a discount is available. If there is a discount, it calculates the percentage off and updates the total. If the discount is 0%, it prints a message.
+
+**`void_last_transaction()`**
+
+Removes the last transaction from the transaction history and subtracts its cost from the total.
+
+**`discount` property**
+
+Uses a getter and setter to manage the discount percentage and check that it is an integer between 0 and 100.
+
+### How to Run the Project
+
+1. Clone the Repository
+
+git clone git@github.com:a-gbatie/oop-p2-cash-register-lab.git
+
+2. Open the Project
+
+Open the cloned project folder in Visual Studio Code.
+
+3. Install Dependencies
+
+This project uses Python and Pipenv.
+
+python3 -m pipenv install
+
+4. Run the Tests
+
+python3 -m pipenv run pytest
+
+To stop at the first failing test:
+
+python3 -m pipenv run pytest -x
+
+### Testing
+
+I used Pytest to test the functionality of my CashRegister class.
+
+The tests cover:
+
+- Creating a cash register.
+- Initializing attributes.
+- Adding items and updating totals.
+- Adding items with optional quantities.
+- Applying discounts.
+- Displaying discount messages.
+- Voiding transactions.
+- Handling multiple items in a transaction.
+
+### Screenshot of Completed Work
+
+The screenshot below shows the results of running the project's tests.
+
+![alt text](image.png)
